@@ -1,15 +1,31 @@
-Source: template-repository
-Section: unknown
+Source: socksio
+Section: python
 Priority: optional
-Maintainer: Tsic404 <liuheng@deepin.org>
-Build-Depends: debhelper (>= 11)
-Standards-Version: 4.1.3
-Homepage: https://github.com/deepin-community/template-repository
-#Vcs-Browser: https://salsa.debian.org/debian/deepin-community-template-repository
-#Vcs-Git: https://salsa.debian.org/debian/deepin-community-template-repository.git
+Maintainer: Sandro Tosi <morph@debian.org>
+Build-Depends: debhelper-compat (= 13),
+               flit,
+               pybuild-plugin-pyproject,
+               python3-all,
+               python3-pytest <!nocheck>,
+               python3-pytest-cov <!nocheck>,
+Standards-Version: 4.6.0.1
+Testsuite: autopkgtest-pkg-python
+Homepage: https://github.com/sethmlarson/socksio
+Vcs-Git: https://salsa.debian.org/morph/socksio.git
+Vcs-Browser: https://salsa.debian.org/morph/socksio
+Rules-Requires-Root: no
 
-Package: template-repository
-Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}
-Description: <insert up to 60 chars description>
- <insert long description, indented with spaces>
+Package: python3-socksio
+Architecture: all
+Depends: ${misc:Depends},
+         ${python3:Depends},
+Recommends: ${python3:Recommends},
+Suggests: ${python3:Suggests},
+Description: Sans-I/O implementation of SOCKS4, SOCKS4A, and SOCKS5
+ Client-side sans-I/O SOCKS proxy implementation. Supports SOCKS4, SOCKS4A, and
+ SOCKS5.
+ .
+ socksio is a sans-I/O library similar to h11 or h2, this means the library
+ itself does not handle the actual sending of the bytes through the network, it
+ only deals with the implementation details of the SOCKS protocols so you can
+ use it in any I/O library you want.
